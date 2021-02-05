@@ -26877,7 +26877,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-card>\n  <ion-card-header>\n    <ion-card-subtitle>Editar</ion-card-subtitle>\n    <ion-card-title>{{task.name | uppercase}}</ion-card-title>\n\n  </ion-card-header>\n  <ion-card-content>\n    <ion-item>\n      <ion-label position=\"floating\">Nombre:</ion-label>\n      <ion-input [(ngModel)]=\"task.name\" placeholder=\"Nombre\"></ion-input>\n    </ion-item>\n    <!--\n    <ion-item>\n      <ion-button (click)=\"deleteTask()\">Borrar</ion-button>\n    </ion-item>\n    -->\n  </ion-card-content>\n</ion-card>";
+      __webpack_exports__["default"] = "<ion-card>\n  <ion-card-header>\n    <ion-card-subtitle>Editar</ion-card-subtitle>\n    <ion-card-title>{{task.name | uppercase}}</ion-card-title>\n\n  </ion-card-header>\n  <ion-card-content>\n    <ion-item>\n      <ion-label position=\"floating\">Nombre:</ion-label>\n      <ion-input [(ngModel)]=\"task.name\" placeholder=\"Nombre\"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Asignar a:</ion-label>\n      <ion-select [(ngModel)]=\"task.user\">\n        <ion-select-option *ngFor=\"let user of users\">{{user.displayName}}</ion-select-option>\n      </ion-select>\n    </ion-item>\n    <!--\n    <ion-item>\n      <ion-button (click)=\"deleteTask()\">Borrar</ion-button>\n    </ion-item>\n    -->\n  </ion-card-content>\n</ion-card>";
       /***/
     },
 
@@ -26897,7 +26897,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<h2>TO-DO list</h2>\n<ion-card *ngFor=\"let task of tasks; let i = index\" (click)=\"onSelect(task)\">\n  <ion-card-header>\n    <ion-card-title>TAREA # {{i + 1}} -------- FECHA: {{task.date| date}}</ion-card-title>\n  </ion-card-header>\n  <ion-card-content>\n    <strong>USUARIO:</strong> {{task.user}} <br>\n    <strong>NOMBRE:</strong> {{task.name}}\n    <button style=\"background-color: red; color:white; padding: 10px; margin: 10px;\"\n      (click)=\"deleteTask(task)\">Borrar</button>\n  </ion-card-content>\n</ion-card>\n\n<div *ngIf=\"selectedTask\">\n  <app-crud-detail [task]=\"selectedTask\" (clickp)=\"deleteTask()\"></app-crud-detail>\n</div>\n<ion-card>\n  <ion-card-header *ngIf=\"users.length > 0 \">\n    <ion-card-title>Nueva tarea</ion-card-title>\n  </ion-card-header>\n  <ion-card-content>\n\n    <ion-item *ngIf=\"users.length > 0 \">\n      <ion-label position=\"floating\">Nombre:</ion-label>\n      <ion-input [(ngModel)]=\"taskName\" placeholder=\"Nombre\"></ion-input>\n    </ion-item>\n\n    <ion-item *ngIf=\"users.length > 0 \">\n      <ion-label>Asignar a:</ion-label>\n      <ion-select [(ngModel)]=\"userName\">\n        <ion-select-option *ngFor=\"let user of users\">{{user.displayName}}</ion-select-option>\n      </ion-select>\n    </ion-item>\n\n    <ion-button *ngIf=\"users.length > 0 \" (click)=\"newTask()\">nuevo </ion-button>\n    <button style=\"background-color: brown; color:white; padding: 10px; margin: 10px;\" (click)=\"googleLogin()\">Login con\n      GOOGLE</button>\n  </ion-card-content>\n</ion-card>";
+      __webpack_exports__["default"] = "<h2>TO-DO list</h2>\n<ion-card color=\"primary\" *ngIf=\"tasks.length > 0 \">\n  <ion-card-header>\n    <ion-card-title>Buscar</ion-card-title>\n  </ion-card-header>\n  <ion-card-content>\n    <ion-item>\n      <ion-label position=\"floating\">Nombre de tarea:</ion-label>\n      <ion-input [(ngModel)]=\"taskNameSearching\" placeholder=\"Nombre de tarea\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">Nombre de usuario:</ion-label>\n      <ion-input [(ngModel)]=\"userNameSearching\" placeholder=\"Nombre de usuario\"></ion-input>\n    </ion-item>\n    <!--ion-item>\n      <ion-label position=\"floating\">Fecha:</ion-label>\n      <ion-input [(ngModel)]=\"dateSearching\" placeholder=\"fecha\"></ion-input>\n    </ion-item -->\n  </ion-card-content>\n</ion-card>\n<h1 *ngIf=\"tasks.length > 0 \">Listado de tareas</h1>\n<ion-card color=\"warning\" *ngFor=\"let task of tasks; let i = index\" (click)=\"onSelect(task)\">\n  <ion-card-header>\n    <ion-card-title>TAREA # {{i + 1}} -------- FECHA: {{task.date| date}}</ion-card-title>\n  </ion-card-header>\n  <ion-card-content>\n    <strong>USUARIO:</strong> {{task.user}} <br>\n    <strong>NOMBRE:</strong> {{task.name}}\n    <button style=\"background-color: red; color:white; padding: 10px; margin: 10px;\"\n      (click)=\"deleteTask(task)\">Borrar</button>\n  </ion-card-content>\n</ion-card>\n\n<div *ngIf=\"selectedTask && tasks.indexOf(selectedTask) >= 0\">\n  <app-crud-detail [task]=\"selectedTask\" (clickp)=\"deleteTask()\"></app-crud-detail>\n</div>\n<ion-card color=\"success\">\n  <ion-card-header *ngIf=\"users.length > 0 \">\n    <ion-card-title>Nueva tarea</ion-card-title>\n  </ion-card-header>\n  <ion-card-content>\n\n    <ion-item *ngIf=\"users.length > 0 \">\n      <ion-label position=\"floating\">Nombre:</ion-label>\n      <ion-input [(ngModel)]=\"taskName\" placeholder=\"Nombre\"></ion-input>\n    </ion-item>\n\n    <ion-item *ngIf=\"users.length > 0 \">\n      <ion-label>Asignar a:</ion-label>\n      <ion-select [(ngModel)]=\"userName\">\n        <ion-select-option *ngFor=\"let user of users\">{{user.displayName}}</ion-select-option>\n      </ion-select>\n    </ion-item>\n\n    <ion-button *ngIf=\"users.length > 0 \" (click)=\"newTask()\">Crear nueva tarea </ion-button>\n    <button style=\"background-color: brown; color:white; padding: 10px; margin: 10px;\"\n      (click)=\"googleLogin()\">{{users.length == 0 ? \"Login\" : \"Login a otro usuario\"}} </button>\n  </ion-card-content>\n</ion-card>\n\n<h1>instrucciones</h1>\n<ul>\n  <li>Inicia sesion</li>\n  <li>Puedes ingresar tareas y asignarlas a los usuarios con los que inicies sesion</li>\n  <li>Para editar puedes dar click en la tarea y se abrira abajo un espacio para editar</li>\n\n</ul>";
       /***/
     },
 
@@ -26996,24 +26996,40 @@
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
       "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ../services/auth.service */
+      "./src/app/services/auth.service.ts");
 
       var CrudDetailComponent = /*#__PURE__*/function () {
-        function CrudDetailComponent() {
+        function CrudDetailComponent(authSvc) {
           _classCallCheck(this, CrudDetailComponent);
 
+          this.authSvc = authSvc;
           this.clickp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         }
 
         _createClass(CrudDetailComponent, [{
           key: "ngOnInit",
-          value: function ngOnInit() {}
+          value: function ngOnInit() {
+            this.getUsers();
+          }
+        }, {
+          key: "getUsers",
+          value: function getUsers() {
+            this.users = this.authSvc.getUsers();
+          }
         }]);
 
         return CrudDetailComponent;
       }();
 
       CrudDetailComponent.ctorParameters = function () {
-        return [];
+        return [{
+          type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
+        }];
       };
 
       CrudDetailComponent.propDecorators = {
@@ -27107,11 +27123,11 @@
       "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-database.js");
 
       var ExploreContainerComponent = /*#__PURE__*/function () {
-        function ExploreContainerComponent(db, personService, authSvc) {
+        function ExploreContainerComponent(db, taskService, authSvc) {
           _classCallCheck(this, ExploreContainerComponent);
 
           this.db = db;
-          this.personService = personService;
+          this.taskService = taskService;
           this.authSvc = authSvc;
           this.title = 'To-do list';
           this.description = 'Todo';
@@ -27122,22 +27138,24 @@
         _createClass(ExploreContainerComponent, [{
           key: "newTask",
           value: function newTask() {
-            var task = {
-              name: this.taskName,
-              date: new Date(),
-              user: this.userName
-            };
-            this.personService.pushTask(task);
+            if (this.taskName != undefined && this.taskName != "" && this.userName != undefined && this.userName != "") {
+              var task = {
+                name: this.taskName,
+                date: new Date(),
+                user: this.userName
+              };
+              this.taskService.pushTask(task);
+            } else alert("Por favor ingresa un usuario o nombre de la tarea");
           }
         }, {
           key: "getTasks",
           value: function getTasks() {
-            this.tasks = this.personService.getTasks();
+            this.tasks = this.taskService.getTasks();
           }
         }, {
           key: "deleteTask",
           value: function deleteTask(currentTask) {
-            this.personService.deleteTask(currentTask);
+            this.taskService.deleteTask(currentTask);
           }
         }, {
           key: "onSelect",
@@ -27166,25 +27184,20 @@
                     case 3:
                       user = _context.sent;
                       this.authSvc.pushUser(user.displayName, user.uid);
-
-                      if (user) {
-                        alert("LOGEADO");
-                      }
-
-                      _context.next = 11;
+                      _context.next = 10;
                       break;
 
-                    case 8:
-                      _context.prev = 8;
+                    case 7:
+                      _context.prev = 7;
                       _context.t0 = _context["catch"](0);
                       console.log(_context.t0);
 
-                    case 11:
+                    case 10:
                     case "end":
                       return _context.stop();
                   }
                 }
-              }, _callee, this, [[0, 8]]);
+              }, _callee, this, [[0, 7]]);
             }));
           }
         }, {
